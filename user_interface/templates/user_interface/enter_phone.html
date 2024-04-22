@@ -1,0 +1,14 @@
+{% extends 'user_interface/base.html' %}
+
+{% block content %}
+<div style="display: flex; justify-content: center; align-items: center; height: 100vh;">
+  <div style="width: 400px; padding: 20px; border: 1px solid #ccc; border-radius: 5px; background-color: #f9f9f9;">
+    <h2 style="text-align: center;">Введите ваш номер телефона</h2>
+    <form method="post">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit" style="display: block; width: 100%; padding: 10px; margin-top: 10px; background-color: #007bff; color: #fff; border: none; border-radius: 5px; cursor: pointer;">Submit</button>
+    </form>
+  </div>
+</div>
+{% endblock %}

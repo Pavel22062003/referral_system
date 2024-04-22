@@ -1,0 +1,28 @@
+{% extends 'user_interface/base.html' %}
+
+{% block content %}
+<div style="display: flex; justify-content: center; align-items: center; height: 100vh;">
+  <div style="width: 400px; padding: 20px; border: 1px solid #ccc; border-radius: 5px; background-color: #f9f9f9; text-align: center;">
+    <h2>Профиль</h2>
+    <p>Телефон: {{ user.phone }}</p>
+    <p>Ваш реферальный код: {{ user.referral_code.number }}</p>
+
+    {% if referral_info %}
+      <p>Вы уже использовали реферальный код: {{ referral_info.referral_code.number }}</p>
+    {% endif %}
+
+    {% if error_info %}
+      <p style="color: red;">{{ error_info }}</p>
+    {% endif %}
+
+    {% if not referral_info %}
+    <form method="post" action="{% url 'user_interface:activate_referral_code' %}">
+        {% csrf_token %}
+        <input type="text" name="referral_code" placeholder="Enter Referral Code">
+        <button type="submit" style="margin-top: 10px; background-color: #007bff; color: #fff; border: none; border-radius: 5px; padding: 10px; cursor: pointer;">Submit</button>
+    </form>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}
+

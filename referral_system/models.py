@@ -33,8 +33,8 @@ class BalanceOperation(BaseModel):
 
 
 class AccrualSettings(BaseModel):
-    for_referral = models.IntegerField(default=0)
-    for_referral_code_owner = models.IntegerField(default=0)
+    for_referral = models.IntegerField(default=20)
+    for_referral_code_owner = models.IntegerField(default=20)
 
     @staticmethod
     def get_instance():
